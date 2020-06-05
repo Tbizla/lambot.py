@@ -15,9 +15,7 @@ class HTTPSession(aiohttp.ClientSession):
         """
         Closes the ClientSession instance
         cleanly when the instance is deleted.
-
         Useful for things like when the interpreter closes.
-
         This would be perfect if discord.py had this as well. :thinking:
         """
         if not self.closed:

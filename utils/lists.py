@@ -1,6 +1,36 @@
-ballresponse = [
-  'Yes', 'No', 'Take a wild guess...', 'Very doubtful',
-  'Sure', 'Without a doubt', 'Most likely', 'Might be possible',
-  "You'll be the judge", 'no... (╯°□°）╯︵ ┻━┻', 'no... baka',
-  'senpai, pls no ;-;'
+lamsaying = [
+    "Broodjuh!!",
+    "KANG!!",
+    "Ik maak ze KAPOT!",
+    "Sterf!",
+    "En nou OPHOERUH!",
+    "Jonguh, Godverdommuh, KUThooeer!",
+    "ahh Jonguh!",
+    "Zo zit dat gwwoon",
+    "Crepeer met 1 hp",
+    "Kip, krijg de vogelgriep",
+    "Je OMA",
+    "Wie ben je, wat doe je hier, ik moet jou niet, GA WEG!"
+]
+ballresponses = [
+    'Signs point to yes.',
+    'Yes.',
+    'Reply hazy, try again.',
+    'Without a doubt.',
+    'My sources say no.',
+    'As I see it, yes.',
+    'You may rely on it.',
+    'Concentrate and ask again.',
+    'Outlook not so good.',
+    'It is decidedly so.',
+    'Better not tell you now.',
+    'Very doubtful.',
+    'Yes - definitely.',
+    'It is certain.',
+    'Cannot predict now.',
+    'Most likely.',
+    'Ask again later.',
+    'My reply is no.',
+    'Outlook good.',
+    "Don't count on it."
 ]

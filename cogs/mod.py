@@ -116,7 +116,8 @@ class Moderator(commands.Cog):
         muted_role = next((g for g in ctx.guild.roles if g.name == "Muted"), None)
 
         if not muted_role:
-            return await ctx.send("Are you sure you've made a role called **Muted**? Remember that it's case sensetive too...")
+            return await ctx.send(
+                "Are you sure you've made a role called **Muted**? Remember that it's case sensetive too...")
 
         try:
             await member.add_roles(muted_role, reason=default.responsible(ctx.author, reason))
@@ -135,7 +136,8 @@ class Moderator(commands.Cog):
         muted_role = next((g for g in ctx.guild.roles if g.name == "Muted"), None)
 
         if not muted_role:
-            return await ctx.send("Are you sure you've made a role called **Muted**? Remember that it's case sensetive too...")
+            return await ctx.send(
+                "Are you sure you've made a role called **Muted**? Remember that it's case sensetive too...")
 
         try:
             await member.remove_roles(muted_role, reason=default.responsible(ctx.author, reason))
@@ -152,13 +154,16 @@ class Moderator(commands.Cog):
             return await ctx.send("To prevent abuse, I won't allow mentionable role for everyone/here role.")
 
         if ctx.author.top_role.position <= role.position:
-            return await ctx.send("It seems like the role you attempt to mention is over your permissions, therefor I won't allow you.")
+            return await ctx.send(
+                "It seems like the role you attempt to mention is over your permissions, therefor I won't allow you.")
 
         if ctx.me.top_role.position <= role.position:
             return await ctx.send("This role is above my permissions, I can't make it mentionable ;-;")
 
         await role.edit(mentionable=True, reason=f"[ {ctx.author} ] announcerole command")
-        msg = await ctx.send(f"**{role.name}** is now mentionable, if you don't mention it within 30 seconds, I will revert the changes.")
+        msg = await ctx.send(
+            f"**{role.name}** is now mentionable, if you don't mention it within 30 seconds, I will revert the changes."
+        )
 
         while True:
             def role_checker(m):
@@ -170,7 +175,8 @@ class Moderator(commands.Cog):
                 checker = await self.bot.wait_for('message', timeout=30.0, check=role_checker)
                 if checker.author.id == ctx.author.id:
                     await role.edit(mentionable=False, reason=f"[ {ctx.author} ] announcerole command")
-                    return await msg.edit(content=f"**{role.name}** mentioned by **{ctx.author}** in {checker.channel.mention}")
+                    return await msg.edit(
+                        content=f"**{role.name}** mentioned by **{ctx.author}** in {checker.channel.mention}")
                     break
                 else:
                     await checker.delete()
@@ -209,7 +215,8 @@ class Moderator(commands.Cog):
 
     @find.command(name="nickname", aliases=["nick"])
     async def find_nickname(self, ctx, *, search: str):
-        loop = [f"{i.nick} | {i} ({i.id})" for i in ctx.guild.members if i.nick if (search.lower() in i.nick.lower()) and not i.bot]
+        loop = [f"{i.nick} | {i} ({i.id})"
+                for i in ctx.guild.members if i.nick if (search.lower() in i.nick.lower()) and not i.bot]
         await default.prettyResults(
             ctx, "name", f"Found **{len(loop)}** on your search for **{search}**", loop
         )

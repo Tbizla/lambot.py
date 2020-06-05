@@ -1,10 +1,11 @@
 import os
 
 from utils import default
-from utils.data import Bot, HelpFormat
+from utils.data import Bot
+from utils.data import HelpFormat
 
 config = default.get("config.json")
-print("Logging in...")
+print("Booting the matrix...")
 
 bot = Bot(
     command_prefix=config.prefix,
@@ -17,5 +18,6 @@ for file in os.listdir("cogs"):
     if file.endswith(".py"):
         name = file[:-3]
         bot.load_extension(f"cogs.{name}")
+
 
 bot.run(config.token)

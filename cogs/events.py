@@ -1,11 +1,13 @@
 import discord
 import psutil
 import os
+import random
 
 from datetime import datetime
 from discord.ext import commands
 from discord.ext.commands import errors
 from utils import default
+from utils import lists
 
 
 class Events(commands.Cog):
@@ -49,11 +51,50 @@ class Events(commands.Cog):
             return
 
         try:
-            to_send = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).send_messages and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
+            to_send = sorted([chan for chan in guild.channels
+                              if chan.permissions_for(guild.me).send_messages
+                              and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
         except IndexError:
             pass
         else:
             await to_send.send(self.config.join_message)
+
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        channel = member.guild.system_channel
+        if channel is not None:
+            await channel.send(f'Whalecum {member.mention}!')
+            print(f'{member} has joined the [LAM] server.')
+
+    @commands.Cog.listener()
+    async def on_member_remove(self, member):
+        channel = member.guild.system_channel
+        if channel is not None:
+            await channel.send('En NoU oPhOeReN!')
+            print(f'{member} has left the server.')
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.author == self.bot:
+            return
+
+        if "kuthoer" in message.content:
+            saying = random.choice(lists.lamsaying)
+            await message.channel.send(f'{saying}')
+
+        if "Kuthoer" in message.content:
+            saying = random.choice(lists.lamsaying)
+            await message.channel.send(f'{saying}')
+
+        if "KUTHOER" in message.content:
+            saying = random.choice(lists.lamsaying)
+            await message.channel.send(f'{saying}')
+
+        if "5 euro" in message.content:
+            await message.channel.send(f'vijf euro? Op je muil,.. en gouw! Het is 1 LAM gvd')
+
+        if "2 woorden 9 letters" in message.content:
+            await message.channel.send(f'Duurt lang!!')
 
     @commands.Cog.listener()
     async def on_command(self, ctx):
@@ -64,7 +105,7 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        """ The function that actiavtes when boot was completed """
+        """ The function that activates when boot was completed """
         if not hasattr(self.bot, 'uptime'):
             self.bot.uptime = datetime.utcnow()
 

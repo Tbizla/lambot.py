@@ -83,7 +83,6 @@ class Fun_Commands(commands.Cog):
     @commands.command()
     async def supreme(self, ctx, *, text: commands.clean_content(fix_channel_mentions=True)):
         """ Make a fake Supreme logo
-
         Arguments:
             --dark | Make the background to dark colour
             --light | Make background to light and text to dark colour
@@ -183,7 +182,6 @@ class Fun_Commands(commands.Cog):
     @commands.command()
     async def password(self, ctx, nbytes: int = 18):
         """ Generates a random password string for you
-
         This returns a random URL-safe text string, containing nbytes random bytes.
         The text is Base64 encoded, so on average each byte results in approximately 1.3 characters.
         """
