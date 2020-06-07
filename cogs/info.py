@@ -37,8 +37,14 @@ class Information(commands.Cog):
         # TL:DR, you have to disclose source according to MIT.
         # Reference: https://github.com/AlexFlipnote/discord_bot.py/blob/master/LICENSE
         await ctx.send(
-            f"**{ctx.bot.user}** is powered by this source code:\nhttps://github.com/AlexFlipnote/discord_bot.py"
-            f"\n[LAM]bot source:\nhttps://github.com/Tbizla/lambot.py")
+                f"**{ctx.bot.user}** is powered by this source code:\nhttps://github.com/AlexFlipnote/discord_bot.py"
+        )
+
+    @commands.command()
+    async def github(self,ctx):
+        await ctx.send(
+            f"\n[LAM]bot source:\nhttps://github.com/Tbizla/lambot.py"
+        )
 
     @commands.command(aliases=['supportserver', 'feedbackserver'])
     async def botserver(self, ctx):
