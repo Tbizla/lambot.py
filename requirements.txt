@@ -1,7 +1,9 @@
 asyncio~=3.4.3
 discord
-psutil~=5.7.0
+psutil~=5.7.2
 pytz
 timeago~=1.0.14
 yarl
 aiohttp~=3.6.2
+dnspython
+pymongo
